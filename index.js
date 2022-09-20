@@ -3,6 +3,7 @@
 const express = require('express');
 const notFound = require('./err-handlers/404');
 const errorHandler = require('./err-handlers/500')
+const PORT = process.env.PORT || 3002
 
 console.log('helloooo')
 
@@ -20,4 +21,4 @@ app.use('*', notFound);
 
 app.use(errorHandler);
 
-app.listen(3002);
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));
