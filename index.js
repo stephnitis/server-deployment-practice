@@ -7,6 +7,10 @@ console.log('helloooo')
 
 const app = express();
 
+app.get('/', (req, res, next) => {
+  res.status(200).send('hey world hey')
+})
+
 app.use('*', notFound);
 
 app.listen(3002);
