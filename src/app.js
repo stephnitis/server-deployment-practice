@@ -2,7 +2,7 @@
 
 const express = require('express');
 const notFound = require('./err-handlers/404');
-const errorHandler = require('./src/err-handlers/500')
+const errorHandler = require('./err-handlers/500')
 const PORT = process.env.PORT || 3002
 
 console.log('helloooo')
