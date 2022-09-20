@@ -1,6 +1,5 @@
 'use strict';
 
-const { describe, it } = require('eslint/lib/rule-tester/rule-tester');
 const supertest = require('supertest');
 const {app} = require('../app');
 const request = supertest(app);
@@ -8,6 +7,17 @@ const request = supertest(app);
 describe('API Server', () => {
   it('handles invalid requests', async () => {
     const response = await request.get('/foo');
-    expect(response.status)
-  })
-})
+    expect(response.status).toEqual(404);
+  });
+  it('handles errors', async () => {
+    const response = await request.get('/bad');
+    expect(response.status).toEqual(500);
+    expect(response.body.route).toEqual('/bad');
+    expect(response.body.message).toEqual('this route is no bueno');
+  });
+  it('handles root path', async () => {
+    const response = await request.get('/');
+    expect(response.status).toBe(200);
+    expect(response.text).toEqual('hey world hey');
+  });
+});
