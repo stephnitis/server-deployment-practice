@@ -9,7 +9,11 @@ const app = express();
 
 app.get('/', (req, res, next) => {
   res.status(200).send('hey world hey')
-})
+});
+
+app.get('/bad', (req, res, next) => {
+  next('this route is no bueno');
+});
 
 app.use('*', notFound);
 
