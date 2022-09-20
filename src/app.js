@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const notFound = require('./src/err-handlers/404');
+const notFound = require('./err-handlers/404');
 const errorHandler = require('./src/err-handlers/500')
 const PORT = process.env.PORT || 3002
 
@@ -25,5 +25,5 @@ function start(){
   app.listen(PORT, () => console.log(`listening on port ${PORT}`));  
 }
 
-module.exports = { app, start };
+module.exports = {app, start};
 
